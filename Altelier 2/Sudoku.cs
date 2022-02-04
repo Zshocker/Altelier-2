@@ -13,15 +13,17 @@ namespace Altelier_2
     public partial class Sudoku : Form
     {
         Soduko_Backend soduko;
+        bool started = false;
         public Sudoku()
         {
             InitializeComponent();
             soduko = new Soduko_Backend(MainTable);
+            started = true;
         }
 
         private void Check_Changes(object sender, EventArgs e)
         {
-            soduko.check_Error((NumericUpDown)sender);
+            if(started)soduko.check_Error((NumericUpDown)sender);
         }
 
        

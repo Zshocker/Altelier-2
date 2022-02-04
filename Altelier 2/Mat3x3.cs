@@ -18,7 +18,30 @@ namespace Altelier_2
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    Values[i, j] = (NumericUpDown)Panel.GetControlFromPosition(i,j);
+                    Values[i, j] = (NumericUpDown)Panel.GetControlFromPosition(i, j);
+                }
+            }
+        }
+        public void Init(Soduko_Backend soduko)
+        {
+            Random Sq = new Random((int)DateTime.Now.ToBinary());
+            Random random = new Random((int)DateTime.Now.ToBinary());
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    int nWq = Sq.Next(10000);
+                    if (nWq < 2500)
+                    {
+                        int Count = 1;
+                        do
+                        {
+                            if (Count == 1000) return;
+                            Values[i, j].Value = random.Next(1,9);
+                            Values[i, j].Enabled = false;
+                            Count++;
+                        } while (!soduko.check_Error(Values[i, j], false));
+                    }
                 }
             }
         }
