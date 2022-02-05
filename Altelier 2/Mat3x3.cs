@@ -22,27 +22,25 @@ namespace Altelier_2
                 }
             }
         }
-        public void Init(Soduko_Backend soduko)
+
+        public void Init_Row(string st,int Row)
         {
             Random Sq = new Random((int)DateTime.Now.ToBinary());
             Random random = new Random((int)DateTime.Now.ToBinary());
+           
             for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < 3; j++)
+                int nWq = Sq.Next(10000);
+                if (nWq < 8000)
                 {
-                    int nWq = Sq.Next(10000);
-                    if (nWq < 2500)
+                    string Mini = st.Substring(i, 1);
+                    if (Mini!="0")
                     {
-                        int Count = 1;
-                        do
-                        {
-                            if (Count == 1000) return;
-                            Values[i, j].Value = random.Next(1,9);
-                            Values[i, j].Enabled = false;
-                            Count++;
-                        } while (!soduko.check_Error(Values[i, j], false));
+                       Values[i, Row].Value = int.Parse(Mini);
+                       Values[i, Row].Enabled = false;
                     }
                 }
+               
             }
         }
         public bool contains(NumericUpDown upDown, out int X,out int Y)
@@ -105,6 +103,17 @@ namespace Altelier_2
                 if (va != 0)
                     if (Value != Values[i, collom])
                         if (va == Value.Value) return false;
+            }
+            return true;
+        }
+        public bool check_filled()
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    if (Values[i, j].Value == 0) return false;
+                }
             }
             return true;
         }

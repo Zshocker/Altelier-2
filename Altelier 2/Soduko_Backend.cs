@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Altelier_2
 {
@@ -11,9 +12,15 @@ namespace Altelier_2
     {
         private TableLayoutPanel Table;
         private Mat3x3[,] Values=new Mat3x3[3,3];
-
+        private static List<String> Games=null;
+        private static void Read_Games()
+        {
+            string ProgDire = Directory.GetCurrentDirectory().Replace("bin\\Debug", "");
+            Games = new List<string>(File.ReadAllLines(ProgDire + "Games.txt"));
+        }
         public Soduko_Backend(TableLayoutPanel table)
         {
+            if(Games==null) Soduko_Backend.Read_Games();
             Table = table;
             for (int i = 0; i < 3; i++)
             {
@@ -24,12 +31,19 @@ namespace Altelier_2
                     if (tableLayout != null)Values[i, j] = new Mat3x3(tableLayout);
                 }
             }
+            //init with a random game
+            int Game = new Random((int)DateTime.Now.ToBinary()).Next(Games.Count);
+            int k = 0;
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 3; j++)
                 {
-
-                    Values[i, j].Init(this);
+                    for (int l = 0; l < 3; l++)
+                    {
+                        string Mini = Games[Game].Substring(k, 3);
+                        Values[l, i].Init_Row(Mini,j);
+                        k += 3;
+                    }
                 }
             }
         }
@@ -96,6 +110,13 @@ namespace Altelier_2
             Y = -1;
             return null;
         }
-       
+        public bool check_Filled()
+        {
+            foreach (Mat3x3 item in Values)
+            {
+                if (!item.check_filled()) return false;
+            }
+            return true;
+        }
     }
 }

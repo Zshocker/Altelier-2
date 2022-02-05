@@ -14,8 +14,10 @@ namespace Altelier_2
     {
         Soduko_Backend soduko;
         bool started = false;
+        List<NumericUpDown> Errors = new List<NumericUpDown>();
         public Sudoku()
         {
+           
             InitializeComponent();
             soduko = new Soduko_Backend(MainTable);
             started = true;
@@ -23,7 +25,26 @@ namespace Altelier_2
 
         private void Check_Changes(object sender, EventArgs e)
         {
-            if(started)soduko.check_Error((NumericUpDown)sender);
+            if (started) { 
+                bool s=soduko.check_Error((NumericUpDown)sender);
+                if (s)
+                {
+                    Errors.Remove((NumericUpDown)sender);
+                    if (Errors.Count == 0)
+                    {
+                        if (soduko.check_Filled())
+                        {
+                            MessageBox.Show("You Won!");
+                            soduko = new Soduko_Backend(MainTable);
+                        }
+                    }
+                }
+                else
+                {
+                    if(!Errors.Contains((NumericUpDown)sender))
+                    Errors.Add((NumericUpDown)sender);
+                }
+            }
         }
 
        
