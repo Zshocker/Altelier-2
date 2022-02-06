@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.32106.194
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku", "Altelier 2\Sudoku.csproj", "{28F729CE-F96C-4CA0-B58F-4D6C818F1FB3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dijkstra_Algo", "Dijkstra_Algo\Dijkstra_Algo.csproj", "{F57F62C7-0409-4297-98FC-24C75BE8BF99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dijkistra_inteface", "Dijkistra_inteface\Dijkistra_inteface.csproj", "{ED968A73-8CA5-4E94-AC4A-C01ABF54E225}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{28F729CE-F96C-4CA0-B58F-4D6C818F1FB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28F729CE-F96C-4CA0-B58F-4D6C818F1FB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28F729CE-F96C-4CA0-B58F-4D6C818F1FB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F57F62C7-0409-4297-98FC-24C75BE8BF99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F57F62C7-0409-4297-98FC-24C75BE8BF99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F57F62C7-0409-4297-98FC-24C75BE8BF99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F57F62C7-0409-4297-98FC-24C75BE8BF99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED968A73-8CA5-4E94-AC4A-C01ABF54E225}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED968A73-8CA5-4E94-AC4A-C01ABF54E225}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED968A73-8CA5-4E94-AC4A-C01ABF54E225}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED968A73-8CA5-4E94-AC4A-C01ABF54E225}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
